@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ENGAJA SOLUÇÕES - Pesquisa NR1</title>
+  <style>
+    :root {
+      --azul-escuro: #0D2C54;
+      --azul-medio: #14477c;
+      --branco: #ffffff;
+      --vermelho: #ff4d4d;
+    }
+
+    body {
+      background-color: var(--azul-escuro);
+      color: var(--branco);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--azul-escuro);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header img {
+      max-height: 100px;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+      color: var(--branco);
+    }
+
+    main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: var(--azul-medio);
+      border-radius: 10px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color: var(--branco);
+    }
+
+    label.required::after {
+      content: " *";
+      color: var(--vermelho);
+    }
+
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background-color: #f5faff;
+      color: #000;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #ffffff;
+      color: var(--azul-escuro);
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #e6f0ff;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question {
+      margin-top: 20px;
+    }
+
+    .nota-obrigatorio {
+      font-size: 0.9em;
+      color: var(--vermelho);
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .mensagem-privacidade {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .mensagem-privacidade a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.75em;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://www.engaja.com.br/wp-content/uploads/2023/08/logo-header.png" alt="Logo Engaja Soluções Corporativas" />
+    <h1>ENGAJA SOLUÇÕES CORPORATIVAS – PESQUISA NR1</h1>
+  </header>
+
+  <main>
+    <div class="mensagem-privacidade" id="avisoLGPD">
+      <p><strong>Aviso:</strong> Esta pesquisa é <strong>anônima</strong> e tem o objetivo de melhorar as práticas de segurança na sua empresa.</p>
+      <p>
+        Suas respostas são protegidas pela <strong>Lei Geral de Proteção de Dados (LGPD)</strong>. Leia a LGPD clicando
+        <a href="https://www.gov.br/mds/pt-br/acesso-a-informacao/governanca/integridade/campanhas/lgpd" target="_blank">neste link</a>.
+      </p>
+      <p class="nota-obrigatorio">* Campos obrigatórios</p>
+    </div>
+
+    <div class="section" id="confirmacoes">
+      <label class="required"><input type="checkbox" id="confirmacaoLGPD" /> Confirmo que li e aceito a Política de Privacidade e os termos da LGPD</label>
+      <button onclick="mostrarFormularioInicial()">Avançar</button>
+    </div>
+
+    <form id="formularioNR1" class="hidden">
+      <div class="section" id="etapa1">
+        <h3>Dados para segmentação <span class="nota-obrigatorio">* Campos obrigatórios</span></h3>
+
+        <label>Nome completo:</label>
+        <input type="text" name="nome" placeholder="Opcional" />
+
+        <label class="required">Sexo:</label>
+        <select name="sexo" required>
+          <option value="">Selecione</option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+          <option>Outro</option>
+          <option>Prefiro não dizer</option>
+        </select>
+
+        <label class="required">Faixa etária:</label>
+        <select name="idade" required>
+          <option value="">Selecione</option>
+          <option>Menos de 18</option>
+          <option>18 a 25</option>
+          <option>26 a 35</option>
+          <option>36 a 45</option>
+          <option>46 a 60</option>
+          <option>Mais de 60</option>
+        </select>
+
+        <label>Escolaridade:</label>
+        <select name="escolaridade">
+          <option value="">Selecione</option>
+          <option>Ensino fundamental</option>
+          <option>Ensino médio</option>
+          <option>Técnico</option>
+          <option>Superior completo</option>
+          <option>Pós-graduação</option>
+        </select>
+
+        <label class="required">Setor:</label>
+        <input type="text" name="setor" placeholder="Comercial, financeiro, produção, etc." required />
+
+        <label>Nível hierárquico:</label>
+        <select name="nivel">
+          <option value="">Selecione</option>
+          <option>Operacional</option>
+          <option>Técnico</option>
+          <option>Administrativo</option>
+          <option>Liderança</option>
+          <option>Diretoria</option>
+        </select>
+
+        <label>Turno de trabalho:</label>
+        <select name="turno">
+          <option value="">Selecione</option>
+          <option>Manhã</option>
+          <option>Tarde</option>
+          <option>Noite</option>
+          <option>Horário administrativo</option>
+        </select>
+
+        <label>Tipo de vínculo:</label>
+        <select name="vinculo">
+          <option value="">Selecione</option>
+          <option>CLT</option>
+          <option>Estagiário</option>
+          <option>Terceirizado</option>
+          <option>PJ</option>
+          <option>Aprendiz</option>
+        </select>
+
+        <label class="required">Formato de trabalho:</label>
+        <select name="formato_trabalho" required>
+          <option value="">Selecione</option>
+          <option>Presencial</option>
+          <option>Home office</option>
+          <option>Híbrido</option>
+        </select>
+
+        <label>Faixa salarial:</label>
+        <select name="salario">
+          <option value="">Selecione</option>
+          <option>Até R$ 2.000</option>
+          <option>R$ 2.001 a R$ 5.000</option>
+          <option>R$ 5.001 a R$ 10.000</option>
+          <option>Acima de R$ 10.000</option>
+        </select>
+
+        <label>Tem filhos?</label>
+        <select name="filhos">
+          <option value="">Selecione</option>
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+
+        <label>Tipo de transporte:</label>
+        <select name="transporte">
+          <option value="">Selecione</option>
+          <option>Transporte próprio</option>
+          <option>Transporte coletivo</option>
+          <option>Empresa fornece transporte</option>
+          <option>Outro</option>
+        </select>
+
+        <button type="button" onclick="mostrarEtapa2()">Avançar para perguntas</button>
+      </div>
+
+      <div class="section hidden" id="etapa2">
+        <h3>Perguntas sobre a NR1 <span class="nota-obrigatorio">* Campos obrigatórios</span></h3>
+
+        <div class="question">
+          <label class="required">1. A empresa fornece treinamento adequado sobre segurança?</label>
+          <select name="pergunta1" required>
+            <option value="">Selecione</option>
+            <option>Discordo totalmente</option>
+            <option>Discordo</option>
+            <option>Neutro</option>
+            <option>Concordo</option>
+            <option>Concordo totalmente</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label class="required">2. Tenho conhecimento das minhas responsabilidades de segurança?</label>
+          <select name="pergunta2" required>
+            <option value="">Selecione</option>
+            <option>Discordo totalmente</option>
+            <option>Discordo</option>
+            <option>Neutro</option>
+            <option>Concordo</option>
+            <option>Concordo totalmente</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label class="required">3. Os riscos da minha função são explicados claramente?</label>
+          <select name="pergunta3" required>
+            <option value="">Selecione</option>
+            <option>Discordo totalmente</option>
+            <option>Discordo</option>
+            <option>Neutro</option>
+            <option>Concordo</option>
+            <option>Concordo totalmente</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label class="required">4. A empresa cumpre as exigências legais da NR1?</label>
+          <select name="pergunta4" required>
+            <option value="">Selecione</option>
+            <option>Discordo totalmente</option>
+            <option>Discordo</option>
+            <option>Neutro</option>
+            <option>Concordo</option>
+            <option>Concordo totalmente</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label class="required">5. Sinto que posso reportar riscos sem retaliações?</label>
+          <select name="pergunta5" required>
+            <option value="">Selecione</option>
+            <option>Discordo totalmente</option>
+            <option>Discordo</option>
+            <option>Neutro</option>
+            <option>Concordo</option>
+            <option>Concordo totalmente</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>Deixe aqui uma sugestão ou comentário, se desejar:</label>
+          <textarea name="observacao" rows="4" placeholder="Sua mensagem... (opcional)"></textarea>
+        </div>
+
+        <button type="submit">Enviar respostas</button>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    Engaja Soluções Corporativas. Copyright © 2025. Contato: (11) 97815-3276
+  </footer>
+
+  <script>
+    function mostrarFormularioInicial() {
+      const lgpd = document.getElementById('confirmacaoLGPD').checked;
+      if (lgpd) {
+        document.getElementById('formularioNR1').classList.remove('hidden');
+        document.getElementById('confirmacoes').classList.add('hidden');
+        document.getElementById('avisoLGPD').classList.add('hidden');
+      } else {
+        alert("Você precisa aceitar os termos da LGPD para prosseguir.");
+      }
+    }
+
+    function mostrarEtapa2() {
+      const form = document.getElementById('formularioNR1');
+      const etapa1 = form.querySelector('#etapa1');
+      const etapa2 = form.querySelector('#etapa2');
+      const obrigatorios = etapa1.querySelectorAll('[required]');
+      let valido = true;
+      obrigatorios.forEach(el => {
+        if (!el.value) {
+          valido = false;
+          el.style.border = '2px solid red';
+        } else {
+          el.style.border = '';
+        }
+      });
+      if (valido) {
+        etapa1.classList.add('hidden');
+        etapa2.classList.remove('hidden');
+      } else {
+        alert("Preencha todos os campos obrigatórios antes de avançar.");
+      }
+    }
+  </script>
+</body>
+</html>
